@@ -1,0 +1,25 @@
+{
+  "name": "odin-data_structures",
+  "version": "1.0.0",
+  "description": "In this project I implemented linked lists in javascript for the assignment in TOP, I show acquired knowledges thanks to their free and useful resources for learning;",
+  "main": "babel.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yagami1018/odin-data_structures.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Yagami1018/odin-data_structures/issues"
+  },
+  "homepage": "https://github.com/Yagami1018/odin-data_structures#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.29.7",
+    "jest": "^30.4.2"
+  }
+}
