@@ -8,6 +8,18 @@ class LinkedList {
     }
   }
 
+  size() {
+    return this.size;
+  }
+
+  head() {
+    return this.head;
+  }
+
+  tail() {
+    return this.tail;
+  }
+
   prepend(value) {
     const newNode = new Node(value, this.head);
     if (!this.head) this.tail = newNode;
@@ -57,11 +69,6 @@ class Node {
   }
 }
 
-let list = new LinkedList();
-list.append(1)
+let list = new LinkedList(1, 2, 3, 4, 5);
 
-console.log(list.toString());
-console.log(list.at(0));
-
-list.prepend(6);
-console.log(list.toString());
+console.log(list.tail());
