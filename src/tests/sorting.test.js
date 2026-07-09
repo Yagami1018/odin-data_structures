@@ -3,10 +3,9 @@ import {
     insertionSort,
     quickSort,
     selectionSort,
-    mergeSort
+    mergeSort,
 } from "../algorithms/sortFns.js";
-import tests from '../samples.js'
-
+import tests from "../samples.js";
 
 describe.skip("BubbleSort", () => {
     tests.forEach(({ input, output }) => {
@@ -32,18 +31,18 @@ describe.skip("InsertionSort", () => {
     });
 });
 
-describe.skip('Quick Sort', () => {
+describe.skip("Quick Sort", () => {
     tests.forEach(({ input, output }) => {
-        test(`input(${input}) -> [${output.join(', ')}]`, () => {
-            expect(quickSort(input)).toEqual(output)
-        })
-    })
-})
+        test(`input(${input}) -> [${output.join(", ")}]`, () => {
+            expect(quickSort(input)).toEqual(output);
+        });
+    });
+});
 
-describe.skip('Merge Sort', () => {
+describe.skip("Merge Sort", () => {
     tests.forEach(({ input, output }) => {
-        test(`input(${input}) -> [${output.join(', ')}]`, () => {
-            expect(mergeSort(input)).toEqual(output)
-        })
-    })
-})
+        test(`input(${input}) -> [${output.join(", ")}]`, () => {
+            expect(mergeSort(input)).toEqual(output);
+        });
+    });
+});
