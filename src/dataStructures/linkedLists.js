@@ -58,21 +58,38 @@ export class LinkedList {
     }
 
     findIndex(value) {
-        for(let current = this.head, index = 0; current !== null; current = current.next, index++) {
-            if(current.value === value) return index;
+        for (let current = this.head, index = 0; current; current = current.next, index++) {
+            if (current.value === value) return index;
         }
         return -1;
     }
 
     contains(value) {
-        for (
-            let current = this.head;
-            current !== null;
-            current = current.next
-        ) {
+        for (let current = this.head; current; current = current.next) {
             if (current.value === value) return true;
         }
         return false;
+    }
+
+    insertAt(index, [...values]) {
+        if(index < 0 || index > this.size) throw new RangeError(`Error, index ${index} out of bounds`)
+        if (index == 0) {
+            for (let i = values.length-1; i >= 0; i--) {
+                let newNode = new Node(values[i], this.head);
+                this.head = newNode;
+
+            }
+            return;
+        }
+        for (let current = this.head, i = 0; current; current = current.next, i++) {
+            if (i === index -1) {
+                for (let val of values) {
+                    let newNode = new Node(val, current.next);
+                    current.next= newNode
+                    current = current.next;
+                }
+            }
+        }
     }
 
     toString() {
