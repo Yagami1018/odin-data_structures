@@ -20,4 +20,9 @@ describe("LinkedLists", () => {
         expect(popped).toBe(1);
         expect(list.toString()).toBe("2 -> 3 -> 4 -> 5")
     })
+
+    test("Contains", () => {
+        expect(list.contains(6)).toBe(false)
+        expect(list.contains(3)).toBe(true)
+    })
 });

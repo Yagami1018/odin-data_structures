@@ -40,10 +40,10 @@ export class LinkedList {
     }
 
     pop() {
-        if(!this.head) return;
+        if (!this.head) return;
         let newHead = this.head.next;
         let value = this.head.value;
-        this.head = null
+        this.head = null;
         this.head = newHead;
         return value;
     }
@@ -57,7 +57,16 @@ export class LinkedList {
         return current.value;
     }
 
-    contains
+    contains(value) {
+        for (
+            let current = this.head;
+            current !== null;
+            current = current.next
+        ) {
+            if (current.value === value) return true;
+        }
+        return false;
+    }
 
     toString() {
         let str = "";
