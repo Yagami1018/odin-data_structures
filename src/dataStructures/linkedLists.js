@@ -71,23 +71,36 @@ export class LinkedList {
         return false;
     }
 
-    insertAt(index, [...values]) {
-        if(index < 0 || index > this.size) throw new RangeError(`Error, index ${index} out of bounds`)
+    insertAt(index, ...values) {
+        if (index < 0 || index > this.size)
+            throw new RangeError(`Error, index ${index} out of bounds`);
         if (index == 0) {
-            for (let i = values.length-1; i >= 0; i--) {
+            for (let i = values.length - 1; i >= 0; i--) {
                 let newNode = new Node(values[i], this.head);
                 this.head = newNode;
-
             }
             return;
         }
         for (let current = this.head, i = 0; current; current = current.next, i++) {
-            if (i === index -1) {
+            if (i === index - 1) {
                 for (let val of values) {
                     let newNode = new Node(val, current.next);
-                    current.next= newNode
+                    current.next = newNode;
                     current = current.next;
                 }
+            }
+        }
+    }
+
+    removeAt(index) {
+        if (index < 0 || index >= this.size)
+            throw new RangeError(`Error: index ${index} out of bounds`);
+        if (index === 0) this.pop();
+        for (let current = this.head, i = 0; current; current = current.next, i++) {
+            if (i == index - 1) {
+                let next = current.next.next;
+                current.next = null;
+                current.next = next;
             }
         }
     }

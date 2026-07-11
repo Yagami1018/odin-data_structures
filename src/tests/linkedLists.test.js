@@ -32,7 +32,12 @@ describe("LinkedLists", () => {
     });
 
     test("Insert at ", () => {
-        list.insertAt(4, [1, 2, 3]);
-        expect(list.toString()).toBe('1 -> 2 -> 3 -> 4 -> 1 -> 2 -> 3 -> 5');
+        list.insertAt(4, 1, 2, 3);
+        expect(list.toString()).toBe("1 -> 2 -> 3 -> 4 -> 1 -> 2 -> 3 -> 5");
+    });
+
+    test("Remove at", () => {
+        list.removeAt(1);
+        expect(list.toString()).toBe("1 -> 3 -> 4 -> 5");
     });
 });
