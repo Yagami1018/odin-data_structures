@@ -39,6 +39,15 @@ export class LinkedList {
         this.size++;
     }
 
+    pop() {
+        if(!this.head) return;
+        let newHead = this.head.next;
+        let value = this.head.value;
+        this.head = null
+        this.head = newHead;
+        return value;
+    }
+
     at(index) {
         if (index >= this.size || index < 0) return;
         let current = this.head;
@@ -47,6 +56,8 @@ export class LinkedList {
         }
         return current.value;
     }
+
+    contains
 
     toString() {
         let str = "";
