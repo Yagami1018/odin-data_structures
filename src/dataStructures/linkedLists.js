@@ -57,6 +57,13 @@ export class LinkedList {
         return current.value;
     }
 
+    findIndex(value) {
+        for(let current = this.head, index = 0; current !== null; current = current.next, index++) {
+            if(current.value === value) return index;
+        }
+        return -1;
+    }
+
     contains(value) {
         for (
             let current = this.head;

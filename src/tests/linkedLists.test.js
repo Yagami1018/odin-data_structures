@@ -25,4 +25,9 @@ describe("LinkedLists", () => {
         expect(list.contains(6)).toBe(false)
         expect(list.contains(3)).toBe(true)
     })
+
+    test("Find Index", () => {
+        expect(list.findIndex(9)).toBe(-1)
+        expect(list.findIndex(3)).toBe(2)
+    })
 });
