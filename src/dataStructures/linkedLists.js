@@ -107,11 +107,13 @@ export class LinkedList {
 
     toString() {
         let str = "";
-        let current = this.head;
-        while (current) {
-            str += current.value;
-            if (current.next) str += " -> ";
-            current = current.next;
+        for (let current = this.head; current; current = current.next) {
+            str += `( ${current.value} )`;
+            if (current.next) {
+                str += " -> ";
+            } else {
+                str += " -> null";
+            }
         }
         return str;
     }
