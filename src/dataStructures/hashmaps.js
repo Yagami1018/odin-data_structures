@@ -4,6 +4,18 @@ export class HashMap {
         this.size = 0;
     }
 
+    resize() {
+        const cap = this.capacity();
+        const copy = [...this.buckets];
+        this.buckets = new Array(cap * 2).fill(null).map(() => []);
+        this.size = 0;
+        for (let bucket of copy) {
+            for (let pair of bucket) {
+                this.set(pair[0], pair[1]);
+            }
+        }
+    }
+
     _hash(key) {
         let hashcode = 0;
         const primeNumber = 31;
@@ -15,6 +27,7 @@ export class HashMap {
     }
 
     set(key, value) {
+        if (this.size / this.capacity() > 0.75) this.resize();
         const index = this._hash(key);
         const bucket = this.buckets[index];
 
@@ -39,18 +52,29 @@ export class HashMap {
     }
 
     has(key) {
-        return this.get(key) ? true : false;
+        return this.get(key) !== null;
     }
 
     remove(key) {
-        if (!this.get(key)) return false;
+        if (!this.has(key)) return false;
         const index = this._hash(key);
-        this.buckets = this.buckets.filter((bucket) => bucket !== this.buckets[index]);
-        return true;
+        const bucket = this.buckets[index];
+
+        for (let i = 0; i < bucket.length; i++) {
+            if (bucket[i][0] === key) {
+                bucket.splice(i, 1);
+                this.size--;
+                return true;
+            }
+        }
     }
 
     length() {
         return this.size;
+    }
+
+    capacity() {
+        return this.buckets.length;
     }
 
     clear() {
@@ -68,13 +92,23 @@ export class HashMap {
         return keys;
     }
 
-    values(){
-        let values = []
+    values() {
+        let values = [];
         for (let bucket of this.buckets) {
             for (let pair of bucket) {
-                values.push(pair[1])
+                values.push(pair[1]);
             }
         }
-        return values
+        return values;
+    }
+
+    entries() {
+        let entries = [];
+        for (let bucket of this.buckets) {
+            for (let pair of bucket) {
+                entries.push([pair[0], pair[1]]);
+            }
+        }
+        return entries;
     }
 }
