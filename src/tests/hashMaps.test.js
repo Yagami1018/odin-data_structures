@@ -4,6 +4,7 @@ describe('HashMaps',()=>{
     beforeEach(() => {
         hashmap = new HashMap()
         hashmap.set("name", 'hector')
+        hashmap.set("age", 25)
     })
 
     test('Set method', () =>{
@@ -20,7 +21,6 @@ describe('HashMaps',()=>{
     })
 
     test("length", () => {
-        hashmap.set("age", 14)
         expect(hashmap.length()).toBe(2)
     })
 
@@ -28,4 +28,9 @@ describe('HashMaps',()=>{
         hashmap.clear()
         expect(hashmap.length()).toBe(0)
     })
+
+    test('Keys', () => {
+        expect(hashmap.keys()).toEqual(['name'])
+    })
+
 })

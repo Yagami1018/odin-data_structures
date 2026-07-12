@@ -57,4 +57,12 @@ export class HashMap {
         this.buckets = new Array(16).fill(null).map(() => []);
         this.size = 0;
     }
+
+    keys() {
+        let results = [];
+        for (let bucket of this.buckets) {
+            if (bucket) results.push(bucket);
+        }
+        return results
+    }
 }
