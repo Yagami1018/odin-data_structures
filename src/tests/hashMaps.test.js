@@ -13,4 +13,9 @@ describe('HashMaps',()=>{
     test('Has', () => {
         expect(hashmap.has('name')).toBe(true)
     })
+
+    test('Remove', () => {
+        hashmap.remove('name')
+        expect(hashmap.has('name')).toBe(false)
+    })
 })
