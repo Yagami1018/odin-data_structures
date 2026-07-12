@@ -18,4 +18,9 @@ describe('HashMaps',()=>{
         hashmap.remove('name')
         expect(hashmap.has('name')).toBe(false)
     })
+
+    test("length", () => {
+        hashmap.set("age", 14)
+        expect(hashmap.length()).toBe(2)
+    })
 })

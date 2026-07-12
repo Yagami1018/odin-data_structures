@@ -48,4 +48,8 @@ export class HashMap {
         this.buckets = this.buckets.filter((bucket) => bucket !== this.buckets[index]);
         return true;
     }
+
+    length() {
+        return this.size;
+    }
 }
