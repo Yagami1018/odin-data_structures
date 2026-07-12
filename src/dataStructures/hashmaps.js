@@ -35,6 +35,6 @@ export class HashMap {
         for (let pair of bucket) {
             if (pair[0] === key) return pair[1];
         }
-        return undefined;
+        return null;
     }
 }
