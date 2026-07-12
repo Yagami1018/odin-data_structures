@@ -1,4 +1,4 @@
-class HashMap {
+export class HashMap {
     constructor() {
         this.buckets = new Array(16).fill(null).map(() => []);
         this.size = 0;
@@ -23,8 +23,18 @@ class HashMap {
                 pair[1] = value;
                 return;
             }
-            bucket.push([key, value]);
-            this.size++;
         }
+        bucket.push([key, value]);
+        this.size++;
+    }
+
+    get(key) {
+        const index = this._hash(key);
+        const bucket = this.buckets[index];
+
+        for (let pair of bucket) {
+            if (pair[0] === key) return pair[1];
+        }
+        return undefined;
     }
 }
