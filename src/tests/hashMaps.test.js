@@ -33,5 +33,7 @@ describe('HashMaps',()=>{
         expect(hashmap.keys()).toEqual(['name', 'age'])
     })
 
-    
+    test('Values', () => {
+        expect(hashmap.values()).toEqual(['hector',25])
+    })
 })
