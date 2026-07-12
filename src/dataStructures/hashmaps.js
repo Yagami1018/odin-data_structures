@@ -37,4 +37,8 @@ export class HashMap {
         }
         return null;
     }
+
+    has(key) {
+        return this.get(key) ? true: false;
+    }
 }

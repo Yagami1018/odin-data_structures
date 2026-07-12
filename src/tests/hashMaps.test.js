@@ -1,9 +1,16 @@
 import { HashMap } from '../dataStructures/hashmaps'
 describe('HashMaps',()=>{
+    let hashmap;
+    beforeEach(() => {
+        hashmap = new HashMap()
+        hashmap.set("name", 'hector')
+    })
 
     test('Set method', () =>{
-        let hashmap = new HashMap()
-        hashmap.set("name", "hector")
         expect(hashmap.get("name")).toBe('hector')
+    })
+
+    test('Has', () => {
+        expect(hashmap.has('name')).toBe(true)
     })
 })
