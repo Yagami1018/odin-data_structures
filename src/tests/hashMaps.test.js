@@ -23,4 +23,9 @@ describe('HashMaps',()=>{
         hashmap.set("age", 14)
         expect(hashmap.length()).toBe(2)
     })
+
+    test('Clear', () => {
+        hashmap.clear()
+        expect(hashmap.length()).toBe(0)
+    })
 })

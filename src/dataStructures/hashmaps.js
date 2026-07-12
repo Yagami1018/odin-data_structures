@@ -52,4 +52,9 @@ export class HashMap {
     length() {
         return this.size;
     }
+
+    clear() {
+        this.buckets = new Array(16).fill(null).map(() => []);
+        this.size = 0;
+    }
 }
