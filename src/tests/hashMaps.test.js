@@ -30,7 +30,8 @@ describe('HashMaps',()=>{
     })
 
     test('Keys', () => {
-        expect(hashmap.keys()).toEqual(['name'])
+        expect(hashmap.keys()).toEqual(['name', 'age'])
     })
 
+    
 })

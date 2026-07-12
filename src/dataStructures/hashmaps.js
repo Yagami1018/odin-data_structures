@@ -59,10 +59,22 @@ export class HashMap {
     }
 
     keys() {
-        let results = [];
+        let keys = [];
         for (let bucket of this.buckets) {
-            if (bucket) results.push(bucket);
+            for (let pair of bucket) {
+                keys.push(pair[0]);
+            }
         }
-        return results
+        return keys;
+    }
+
+    values(){
+        let values = []
+        for (let bucket of this.buckets) {
+            for (let pair of bucket) {
+                values.push(pair[1])
+            }
+        }
+        return values
     }
 }
