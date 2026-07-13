@@ -15,23 +15,29 @@ export class BinarySearchTree {
         return root;
     }
 
-    includes(value, tree = this.root) {
-        const values = Object.values(tree);
-        if (values.includes(value)) return true;
+    includes(value, root = this.root) {
+        if (root === null) return false;
 
-        const nested = values.filter((value) => typeof value === "object" && value !== null);
+        if (value === root.data) return true;
 
-        return nested.some((nestedObj) => this.includes(value, nestedObj));
+        if (value < root.data) {
+            return this.includes(value, root.left);
+        }
+
+        return this.includes(value, root.right);
     }
 
-    insert(root, key) {
-        if (this.includes(key, root)) return;
+    insert(key) {
+        this.root = this._insert(this.root, key);
+    }
+
+    _insert(root, key) {
         if (root === null) return new Node(key);
 
         if (key < root.data) {
-            root.left = insert(root.left, key);
-        } else {
-            root.right = insert(root.right, key);
+            root.left = this._insert(root.left, key);
+        } else if (key > root.data) {
+            root.right = this._insert(root.right, key);
         }
         return root;
     }

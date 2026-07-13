@@ -14,4 +14,8 @@ describe("Binary Search Tree", () => {
     test("Includes", () => {
         expect(tree.includes(67)).toBe(true);
     });
+    test("Insert", () => {
+        tree.insert(11);
+        expect(tree.includes(11)).toBe(true);
+    });
 });
