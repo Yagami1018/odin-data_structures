@@ -42,6 +42,46 @@ export class BinarySearchTree {
         return root;
     }
 
+    deleteItem(value) {
+        this.root = this._deleteItem(this.root, value);
+    }
+
+    _deleteItem(root, key) {
+        if (root === null) return null;
+
+        if (key < root.data) {
+            root.left = this._delete(root.left, key);
+            return root;
+        }
+
+        if (key > root.data) {
+            root.right = this._delete(root.right, key);
+            return root;
+        }
+
+        if (root.left === null) {
+            return root.right;
+        }
+
+        if (root.right === null) {
+            return root.left;
+        }
+
+        const successor = this._minValue(root.right);
+        root.data = successor.data;
+        root.right = this._delete(root.right, successor.data);
+
+        return root;
+    }
+
+    _minValue(root) {
+        while (root.left !== null) {
+            root = root.left;
+        }
+
+        return root;
+    }
+
     prettyPrint(node, prefix = "", isLeft = true) {
         if (node === null || node === undefined) return;
         this.prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
