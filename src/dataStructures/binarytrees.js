@@ -49,37 +49,23 @@ export class BinarySearchTree {
     _deleteItem(root, key) {
         if (root === null) return null;
 
-        if (key < root.data) {
-            root.left = this._delete(root.left, key);
-            return root;
+        if (key < root.data) root.left = this._deleteItem(root.left, key);
+        else if (key > root.data) root.right = this._deleteItem(root.right, key);
+        else {
+            if (root.left === null) return root.right;
+            if (root.right === null) return root.left;
+
+            const successor = this._getSuccesor(root);
+            root.data = successor.data;
+            root.right = this._deleteItem(root.right, successor.data);
         }
-
-        if (key > root.data) {
-            root.right = this._delete(root.right, key);
-            return root;
-        }
-
-        if (root.left === null) {
-            return root.right;
-        }
-
-        if (root.right === null) {
-            return root.left;
-        }
-
-        const successor = this._minValue(root.right);
-        root.data = successor.data;
-        root.right = this._delete(root.right, successor.data);
-
         return root;
     }
 
-    _minValue(root) {
-        while (root.left !== null) {
-            root = root.left;
-        }
-
-        return root;
+    _getSuccesor(current) {
+        current = current.right;
+        while (current !== null && current.left !== null) current = current.left;
+        return current;
     }
 
     prettyPrint(node, prefix = "", isLeft = true) {

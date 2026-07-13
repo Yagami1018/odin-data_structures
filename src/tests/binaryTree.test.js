@@ -18,4 +18,9 @@ describe("Binary Search Tree", () => {
         tree.insert(11);
         expect(tree.includes(11)).toBe(true);
     });
+
+    test("Remove", () => {
+        tree.deleteItem(1);
+        expect(tree.includes(1)).toBe(false);
+    });
 });
