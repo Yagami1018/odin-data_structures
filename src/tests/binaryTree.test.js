@@ -10,4 +10,8 @@ describe("Binary Search Tree", () => {
     test("Build Tree", () => {
         expect(tree.root.data).toBe(8);
     });
+
+    test("Includes", () => {
+        expect(tree.includes(67)).toBe(true);
+    });
 });

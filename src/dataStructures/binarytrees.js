@@ -15,6 +15,15 @@ export class BinarySearchTree {
         return root;
     }
 
+    includes(value, tree = this.root) {
+        const values = Object.values(tree);
+        if (values.includes(value)) return true;
+
+        const nested = values.filter((value) => typeof value === "object" && value !== null);
+
+        return nested.some((nestedObj) => this.includes(value, nestedObj));
+    }
+
     prettyPrint(node, prefix = "", isLeft = true) {
         if (node === null || node === undefined) return;
         this.prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
