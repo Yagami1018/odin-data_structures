@@ -24,6 +24,18 @@ export class BinarySearchTree {
         return nested.some((nestedObj) => this.includes(value, nestedObj));
     }
 
+    insert(root, key) {
+        if (this.includes(key, root)) return;
+        if (root === null) return new Node(key);
+
+        if (key < root.data) {
+            root.left = insert(root.left, key);
+        } else {
+            root.right = insert(root.right, key);
+        }
+        return root;
+    }
+
     prettyPrint(node, prefix = "", isLeft = true) {
         if (node === null || node === undefined) return;
         this.prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
