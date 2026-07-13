@@ -15,11 +15,7 @@ export class BinarySearchTree {
         return root;
     }
 
-    includes(value) {
-        this.root = this._includes(value, this.root);
-    }
-
-    _includes(value, root = this.root) {
+    includes(value, root = this.root) {
         if (root === null) return false;
 
         if (value === root.data) return true;
