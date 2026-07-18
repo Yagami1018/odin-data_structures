@@ -135,6 +135,41 @@ export class BinarySearchTree {
         callback(node.data);
     }
 
+    height(value) {
+        const node = this._findNode(this.root, value);
+
+        if (node === null) return undefined;
+
+        return this._height(node);
+    }
+
+    _height(node) {
+        if (node === null) return -1;
+
+        return Math.max(this._height(node.left), this._height(node.right)) + 1;
+    }
+
+    depth(value) {
+        let depth = 0;
+        let current = this.root;
+
+        while (current !== null) {
+            if (value === current.data) {
+                return depth;
+            }
+
+            if (value < current.data) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+
+            depth++;
+        }
+
+        return undefined;
+    }
+
     prettyPrint(node, prefix = "", isLeft = true) {
         if (node === null || node === undefined) return;
         this.prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
