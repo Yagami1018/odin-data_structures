@@ -170,6 +170,43 @@ export class BinarySearchTree {
         return undefined;
     }
 
+    _findNode(node, value) {
+        if (node === null) return null;
+
+        if (value === node.data) return node;
+
+        if (value < node.data) {
+            return this._findNode(node.left, value);
+        }
+
+        return this._findNode(node.right, value);
+    }
+
+    isBalanced() {
+        return this._isBalanced(this.root);
+    }
+
+    _isBalanced(node) {
+        if (node === null) return true;
+
+        const leftHeight = this._height(node.left);
+        const rightHeight = this._height(node.right);
+
+        if (Math.abs(leftHeight - rightHeight) > 1) {
+            return false;
+        }
+
+        return this._isBalanced(node.left) && this._isBalanced(node.right);
+    }
+
+    rebalance() {
+        const values = [];
+
+        this.inOrderForEach((value) => values.push(value));
+
+        this.root = this._buildTree(values, 0, values.length - 1);
+    }
+
     prettyPrint(node, prefix = "", isLeft = true) {
         if (node === null || node === undefined) return;
         this.prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
