@@ -87,6 +87,22 @@ export class BinarySearchTree {
         }
     }
 
+    inOrderForEach(callback) {
+        if (typeof callback !== "function") {
+            throw new Error("A callback is required.");
+        }
+
+        this._inOrder(this.root, callback);
+    }
+
+    _inOrder(node, callback) {
+        if (node === null) return;
+
+        this._inOrder(node.left, callback);
+        callback(node.data);
+        this._inOrder(node.right, callback);
+    }
+
     prettyPrint(node, prefix = "", isLeft = true) {
         if (node === null || node === undefined) return;
         this.prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
