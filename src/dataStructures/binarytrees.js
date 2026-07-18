@@ -183,20 +183,23 @@ export class BinarySearchTree {
     }
 
     isBalanced() {
-        return this._isBalanced(this.root);
+        return this._checkBalance(this.root) !== -1;
     }
 
-    _isBalanced(node) {
-        if (node === null) return true;
+    _checkBalance(node) {
+        if (node === null) return 0;
 
-        const leftHeight = this._height(node.left);
-        const rightHeight = this._height(node.right);
+        const leftHeight = this._checkBalance(node.left);
+        if (leftHeight === -1) return -1;
+
+        const rightHeight = this._checkBalance(node.right);
+        if (rightHeight === -1) return -1;
 
         if (Math.abs(leftHeight - rightHeight) > 1) {
-            return false;
+            return -1;
         }
 
-        return this._isBalanced(node.left) && this._isBalanced(node.right);
+        return Math.max(leftHeight, rightHeight) + 1;
     }
 
     rebalance() {
