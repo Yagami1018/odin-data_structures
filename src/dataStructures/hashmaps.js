@@ -27,7 +27,6 @@ export class HashMap {
     }
 
     set(key, value) {
-        if (this.size / this.capacity() > 0.75) this.resize();
         const index = this._hash(key);
         const bucket = this.buckets[index];
 
@@ -39,6 +38,7 @@ export class HashMap {
         }
         bucket.push([key, value]);
         this.size++;
+        if (this.size / this.capacity() > 0.75) this.resize();
     }
 
     get(key) {

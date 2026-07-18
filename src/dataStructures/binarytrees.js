@@ -68,6 +68,25 @@ export class BinarySearchTree {
         return current;
     }
 
+    levelOrderForEach(callback) {
+        if (typeof callback !== "function") {
+            throw new Error("A callback is required.");
+        }
+
+        if (this.root === null) return;
+
+        const queue = [this.root];
+
+        while (queue.length > 0) {
+            const node = queue.shift();
+
+            callback(node.data);
+
+            if (node.left !== null) queue.push(node.left);
+            if (node.right !== null) queue.push(node.right);
+        }
+    }
+
     prettyPrint(node, prefix = "", isLeft = true) {
         if (node === null || node === undefined) return;
         this.prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
